@@ -1,12 +1,19 @@
 var count = 0
-$('#countBtn').on('click', function(evt){
-  $('#countBtn').text(count++)
-})
+
+var $countBtn = document.getElementById('countBtn')
+$countBtn.addEventListener('click', function(evt){
+  $countBtn.innerText = count++
+});
 
 
-$('#colorInput').on('keypress', function(evt){
+var $colorInput = document.getElementById('colorInput');
+
+$colorInput.addEventListener('keypress', function(evt){
+  var $colorList = document.getElementById('colorList');
+  var colorVal = document.createElement('li');
+  colorVal.textContent = $colorInput.value;
   if(evt.keyCode===13){
-    $('body').css('background-color', $('#colorInput').val())
-    $('#colorList').append(`<li>${$('#colorInput').val()}</li>`)
+    $colorList.appendChild(colorVal);
+    document.body.style.backgroundColor = colorVal.textContent;
   }
 })
